@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório Executivo</title>
+  <link rel="icon" type="image/png" href="assets/logo-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <main class="main">
+      <div class="page-head report-toolbar">
+        <div>
+          <h1>Relatório Final</h1>
+          <p class="muted">Diagnóstico executivo da maturidade de TI.</p>
+        </div>
+
+        <div class="toolbar-actions">
+          <select class="input" id="empresaSelect"></select>
+          <button type="button" class="btn btn-primary" id="carregarRelatorio">Gerar</button>
+          <button type="button" class="btn btn-secondary" id="exportarPdf">Exportar PDF</button>
+        </div>
+      </div>
+
+      <div id="reportContent">
+        <div class="empty">Selecione uma empresa para gerar o relatório.</div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="auth.js"></script>
+  <script src="utils.js"></script>
+  <script src="relatorio.js"></script>
+</body>
+</html>

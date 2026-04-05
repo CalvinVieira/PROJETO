@@ -1,0 +1,41 @@
+services:
+  db:
+    build: ./db
+    container_name: stratec-db
+    environment:
+      POSTGRES_DB: stratec
+      POSTGRES_USER: stratec
+      POSTGRES_PASSWORD: stratec123
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U stratec -d stratec"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./maturidade-ti
+    container_name: stratec-backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/stratec
+      SPRING_DATASOURCE_USERNAME: stratec
+      SPRING_DATASOURCE_PASSWORD: stratec123
+    ports:
+      - '8080:8080'
+
+  frontend:
+    build: ./frontend
+    container_name: stratec-frontend
+    depends_on:
+      - backend
+    ports:
+      - '80:80'
+
+volumes:
+  postgres_data:
