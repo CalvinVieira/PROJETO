@@ -9,13 +9,13 @@ public class CorsConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**")
+        registry.addMapping("/**")
                 .allowedOrigins(
                         "http://localhost",
                         "http://127.0.0.1",
                         "http://localhost:80",
                         "http://localhost:8080",
-                        "https://SEU-FRONTEND.onrender.com"
+                        "https://stratec-ti-frontend.onrender.com"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
