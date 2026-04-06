@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*")
+// @CrossOrigin(origins = "*")
 public class RelatorioController {
     private final RelatorioService relatorioService;
     private final DashboardService dashboardService;

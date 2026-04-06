@@ -1,1 +1,34 @@
-<!DOCTYPE html><html lang='pt-BR'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Criar conta</title><link rel='icon' type='image/png' href='assets/logo-icon.png'><link rel='stylesheet' href='style.css'></head><body class='auth-wrap'><div class='card auth-card'><div class='auth-header'><a href='index.html'><img src='assets/logo.png' class='auth-logo'></a><h2>Criar conta</h2><p class='muted'>Cadastre-se para iniciar avaliações de maturidade</p></div><div id='msg'></div><div style='display:flex;justify-content:space-between;align-items:center'><a class='btn-link' href='index.html'>← Voltar para Home</a><a class='btn-link' href='#' onclick="alert('Em produção, esta ação envia instruções de redefinição por e-mail.');return false;">Recuperar senha</a></div><form id='cadastroForm'><label>Nome<input class='input' id='nome' required></label><label>E-mail<input class='input' type='email' id='email' required></label><label>Senha<input class='input' type='password' id='senha' required></label><button class='btn btn-primary' type='submit'>Cadastrar</button> <a class='btn btn-secondary' href='login.html'>Já tenho conta</a></form></div><script src='auth.js'></script><script src='cadastro.js'></script></body></html>
+<!DOCTYPE html>
+<html lang='pt-BR'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Criar conta</title>
+    <link rel='icon' type='image/png' href='assets/logo-icon.png'>
+    <link rel='stylesheet' href='style.css'>
+</head>
+
+<body class='auth-wrap'>
+    <div class='card auth-card'>
+        <div class='auth-header'><a href='index.html'><img src='assets/logo.png' class='auth-logo'></a>
+            <h2>Criar conta</h2>
+            <p class='muted'>Cadastre-se para iniciar avaliações de maturidade</p>
+        </div>
+        <div id='msg'></div>
+        <div style='display:flex;justify-content:space-between;align-items:center'><a class='btn-link'
+                href='index.html'>← Voltar para Home</a><a class='btn-link' href='#'
+                onclick="alert('Em produção, esta ação envia instruções de redefinição por e-mail.');return false;">Recuperar
+                senha</a></div>
+        <form id='cadastroForm'><label>Nome<input class='input' id='nome' required></label><label>E-mail<input
+                    class='input' type='email' id='email' required></label><label>Senha<input class='input'
+                    type='password' id='senha' required></label><button class='btn btn-primary'
+                type='submit'>Cadastrar</button> <a class='btn btn-secondary' href='login.html'>Já tenho conta</a>
+        </form>
+    </div>
+    <script src='auth.js'></script>
+    <script src='cadastro.js'></script>
+    
+</body>
+
+</html>

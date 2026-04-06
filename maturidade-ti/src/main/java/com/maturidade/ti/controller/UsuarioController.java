@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
-@CrossOrigin(origins = "*")
+// @CrossOrigin(origins = "*")
 public class UsuarioController {
     private final UsuarioService service;
     public UsuarioController(UsuarioService service) { this.service = service; }
