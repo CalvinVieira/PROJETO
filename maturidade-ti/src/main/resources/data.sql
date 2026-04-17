@@ -258,3 +258,27 @@ WHERE NOT EXISTS (SELECT 1 FROM questao WHERE pergunta = 'Existe inventário dos
 INSERT INTO questao (pergunta, categoria, tipo_avaliacao, peso)
 SELECT 'Há testes periódicos do plano de continuidade e recuperação com registro de resultados e melhorias?', 'Continuidade e Backup', 'Gestão', 5
 WHERE NOT EXISTS (SELECT 1 FROM questao WHERE pergunta = 'Há testes periódicos do plano de continuidade e recuperação com registro de resultados e melhorias?');
+
+INSERT INTO servico_ti (empresa_id, nome, descricao, categoria, responsavel, sla_horas, status)
+SELECT e.id, 'Service Desk', 'Atendimento inicial e tratamento de chamados dos usuários.', 'Suporte', 'Coordenação de Suporte', 8, 'Ativo'
+FROM empresa e
+WHERE e.nome = 'Empresa Exemplo'
+  AND NOT EXISTS (
+      SELECT 1 FROM servico_ti s WHERE s.empresa_id = e.id AND s.nome = 'Service Desk'
+  );
+
+INSERT INTO servico_ti (empresa_id, nome, descricao, categoria, responsavel, sla_horas, status)
+SELECT e.id, 'Correio Corporativo', 'Serviço de e-mail institucional e colaboração.', 'Comunicação', 'Infraestrutura', 12, 'Ativo'
+FROM empresa e
+WHERE e.nome = 'Empresa Exemplo'
+  AND NOT EXISTS (
+      SELECT 1 FROM servico_ti s WHERE s.empresa_id = e.id AND s.nome = 'Correio Corporativo'
+  );
+
+INSERT INTO servico_ti (empresa_id, nome, descricao, categoria, responsavel, sla_horas, status)
+SELECT e.id, 'ERP Corporativo', 'Sustentação do sistema central de gestão empresarial.', 'Negócio', 'Sistemas Corporativos', 6, 'Ativo'
+FROM empresa e
+WHERE e.nome = 'Empresa Exemplo'
+  AND NOT EXISTS (
+      SELECT 1 FROM servico_ti s WHERE s.empresa_id = e.id AND s.nome = 'ERP Corporativo'
+  );
