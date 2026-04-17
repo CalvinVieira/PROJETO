@@ -32,6 +32,30 @@ CREATE TABLE IF NOT EXISTS resposta (
     dimensao VARCHAR(30)
 );
 
+CREATE TABLE IF NOT EXISTS servico_ti (
+    id BIGSERIAL PRIMARY KEY,
+    nome VARCHAR(120) NOT NULL,
+    descricao VARCHAR(1000),
+    categoria VARCHAR(80) NOT NULL,
+    responsavel VARCHAR(120),
+    sla_horas INTEGER,
+    status VARCHAR(30) NOT NULL,
+    empresa_id BIGINT NOT NULL REFERENCES empresa(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS incidente_ti (
+    id BIGSERIAL PRIMARY KEY,
+    titulo VARCHAR(150) NOT NULL,
+    descricao VARCHAR(2000),
+    prioridade VARCHAR(30) NOT NULL,
+    status VARCHAR(30) NOT NULL,
+    data_abertura TIMESTAMP NOT NULL,
+    data_fechamento TIMESTAMP,
+    sla_horas INTEGER,
+    empresa_id BIGINT NOT NULL REFERENCES empresa(id) ON DELETE CASCADE,
+    servico_id BIGINT REFERENCES servico_ti(id)
+);
+
 INSERT INTO usuario (nome, email, senha, perfil) VALUES
 ('Administrador Stratec', 'admin@stratec.com', '123456', 'ADMIN'),
 ('Ana Avaliadora', 'avaliador@stratec.com', '123456', 'AVALIADOR')

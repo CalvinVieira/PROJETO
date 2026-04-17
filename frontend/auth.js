@@ -16,6 +16,22 @@ function clearUser() {
   localStorage.removeItem("stratec_user");
 }
 
+function protect() {
+  const publicPages = ['index.html', 'login.html', 'cadastro.html', '404.html', ''];
+  const path = window.location.pathname.split('/').pop();
+  if (!publicPages.includes(path) && !getUser()) {
+    window.location.href = 'login.html';
+  }
+}
+
+function logout() {
+  clearUser();
+  window.location.href = 'index.html';
+}
+
+window.API_BASE = API_BASE;
 window.setUser = setUser;
 window.getUser = getUser;
 window.clearUser = clearUser;
+window.protect = protect;
+window.logout = logout;

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análise Segmentada</title>
+  <link rel="icon" type="image/png" href="assets/logo-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="main">
+      <div class="page-head report-toolbar">
+        <div>
+          <h1 id="sectionTitle">Análise Segmentada</h1>
+          <p class="muted" id="sectionSubtitle">Visão executiva por frente de maturidade.</p>
+        </div>
+        <div class="toolbar-actions">
+          <select class="input" id="empresaSelect"></select>
+          <button type="button" class="btn btn-primary" id="carregarResultado">Analisar</button>
+        </div>
+      </div>
+      <div id="resultContent">
+        <div class="empty">Selecione uma empresa para visualizar a análise segmentada.</div>
+      </div>
+    </main>
+  </div>
+  <script src="auth.js"></script>
+  <script>
+    window.RESULT_CONFIG = {
+      active: 'governanca-resultados',
+      title: 'Resultados de Governança',
+      subtitle: 'Leitura estratégica do alinhamento, risco, valor e governança de TI.',
+      type: 'Governança',
+      categories: ['Governança', 'Estratégia', 'Riscos', 'Gestão de Riscos', 'Ativos, Ameaças e Vulnerabilidades', 'Desempenho e Valor']
+    };
+  </script>
+  <script src="utils.js"></script>
+  <script src="resultados-template.js"></script>
+</body>
+</html>

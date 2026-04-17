@@ -282,3 +282,43 @@ WHERE e.nome = 'Empresa Exemplo'
   AND NOT EXISTS (
       SELECT 1 FROM servico_ti s WHERE s.empresa_id = e.id AND s.nome = 'ERP Corporativo'
   );
+
+-- Etapa 2.0: módulo de riscos
+INSERT INTO questao (pergunta, categoria, tipo_avaliacao, peso)
+SELECT 'A organização mantém inventário atualizado dos ativos de TI mais críticos para o negócio?', 'Ativos, Ameaças e Vulnerabilidades', 'Governança', 4
+WHERE NOT EXISTS (SELECT 1 FROM questao WHERE pergunta = 'A organização mantém inventário atualizado dos ativos de TI mais críticos para o negócio?');
+
+INSERT INTO questao (pergunta, categoria, tipo_avaliacao, peso)
+SELECT 'As principais ameaças aos ativos críticos de TI são identificadas e revisadas periodicamente?', 'Ativos, Ameaças e Vulnerabilidades', 'Governança', 4
+WHERE NOT EXISTS (SELECT 1 FROM questao WHERE pergunta = 'As principais ameaças aos ativos críticos de TI são identificadas e revisadas periodicamente?');
+
+INSERT INTO questao (pergunta, categoria, tipo_avaliacao, peso)
+SELECT 'As vulnerabilidades técnicas e processuais mais relevantes são avaliadas e priorizadas pela organização?', 'Ativos, Ameaças e Vulnerabilidades', 'Gestão', 4
+WHERE NOT EXISTS (SELECT 1 FROM questao WHERE pergunta = 'As vulnerabilidades técnicas e processuais mais relevantes são avaliadas e priorizadas pela organização?');
+
+INSERT INTO questao (pergunta, categoria, tipo_avaliacao, peso)
+SELECT 'A organização avalia impacto e probabilidade para classificar riscos de TI e definir prioridades de tratamento?', 'Gestão de Riscos', 'Governança', 5
+WHERE NOT EXISTS (SELECT 1 FROM questao WHERE pergunta = 'A organização avalia impacto e probabilidade para classificar riscos de TI e definir prioridades de tratamento?');
+
+INSERT INTO questao (pergunta, categoria, tipo_avaliacao, peso)
+SELECT 'Existe plano de tratamento de riscos com responsáveis, prazos e monitoramento da execução?', 'Gestão de Riscos', 'Gestão', 5
+WHERE NOT EXISTS (SELECT 1 FROM questao WHERE pergunta = 'Existe plano de tratamento de riscos com responsáveis, prazos e monitoramento da execução?');
+
+-- Etapa 3: módulo de serviços de TI baseado em ITIL
+INSERT INTO servico_ti (empresa_id, nome, descricao, categoria, responsavel, sla_horas, status)
+SELECT e.id, 'Service Desk', 'Atendimento inicial e tratamento de chamados dos usuários.', 'Suporte', 'Coordenação de Suporte', 8, 'Ativo'
+FROM empresa e
+WHERE e.nome = 'Empresa Exemplo'
+  AND NOT EXISTS (SELECT 1 FROM servico_ti s WHERE s.empresa_id = e.id AND s.nome = 'Service Desk');
+
+INSERT INTO servico_ti (empresa_id, nome, descricao, categoria, responsavel, sla_horas, status)
+SELECT e.id, 'Correio Corporativo', 'Serviço de e-mail institucional e colaboração.', 'Comunicação', 'Infraestrutura', 12, 'Ativo'
+FROM empresa e
+WHERE e.nome = 'Empresa Exemplo'
+  AND NOT EXISTS (SELECT 1 FROM servico_ti s WHERE s.empresa_id = e.id AND s.nome = 'Correio Corporativo');
+
+INSERT INTO servico_ti (empresa_id, nome, descricao, categoria, responsavel, sla_horas, status)
+SELECT e.id, 'ERP Corporativo', 'Sustentação do sistema central de gestão empresarial.', 'Negócio', 'Sistemas Corporativos', 6, 'Ativo'
+FROM empresa e
+WHERE e.nome = 'Empresa Exemplo'
+  AND NOT EXISTS (SELECT 1 FROM servico_ti s WHERE s.empresa_id = e.id AND s.nome = 'ERP Corporativo');
