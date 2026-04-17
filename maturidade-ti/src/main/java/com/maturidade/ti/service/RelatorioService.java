@@ -9,7 +9,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 @Service
@@ -138,18 +144,25 @@ public class RelatorioService {
             if (r.getValor() <= 1) {
                 String cat = r.getQuestao().getCategoria();
                 String pergunta = r.getQuestao().getPergunta();
-                PlanoAcaoDTO plano;
-                switch (cat) {
-                    case "Segurança" -> plano = new PlanoAcaoDTO("Fortalecer Segurança", "Formalizar política de segurança, backup, controle de acesso e resposta a incidentes. Ponto crítico: " + pergunta);
-                    case "Governança" -> plano = new PlanoAcaoDTO("Estruturar Governança", "Definir papéis, indicadores, fóruns de decisão e revisão estratégica de TI. Ponto crítico: " + pergunta);
-                    case "Riscos" -> plano = new PlanoAcaoDTO("Gerir Riscos", "Mapear riscos críticos, definir apetite a risco e plano de tratamento. Ponto crítico: " + pergunta);
-                    case "Serviços" -> plano = new PlanoAcaoDTO("Padronizar Serviços", "Implantar catálogo de serviços, SLA e gestão estruturada de incidentes e problemas. Ponto crítico: " + pergunta);
-                    case "Infraestrutura" -> plano = new PlanoAcaoDTO("Elevar Infraestrutura", "Implementar monitoramento, atualização, backup testado e continuidade operacional. Ponto crítico: " + pergunta);
-                    case "Dados" -> plano = new PlanoAcaoDTO("Governar Dados", "Melhorar proteção, classificação, acesso e uso analítico dos dados. Ponto crítico: " + pergunta);
-                    case "Pessoas" -> plano = new PlanoAcaoDTO("Desenvolver Competências", "Estruturar capacitação, avaliação de desempenho e plano de sucessão para funções críticas. Ponto crítico: " + pergunta);
-                    case "Estratégia" -> plano = new PlanoAcaoDTO("Alinhar Estratégia", "Conectar TI ao negócio por meio de portfólio priorizado, metas e indicadores de valor. Ponto crítico: " + pergunta);
-                    default -> plano = new PlanoAcaoDTO("Melhorar " + cat, "Executar ação corretiva e padronizar controles da categoria " + cat + ". Ponto crítico: " + pergunta);
-                }
+                PlanoAcaoDTO plano = switch (cat) {
+                    case "Governança" -> new PlanoAcaoDTO("Estruturar Governança", "Definir papéis, fóruns de decisão, critérios de priorização e mecanismos formais de acompanhamento da governança de TI. Ponto crítico: " + pergunta);
+                    case "Estratégia" -> new PlanoAcaoDTO("Alinhar Estratégia", "Conectar planejamento, orçamento e roadmap de TI aos objetivos do negócio com revisão executiva periódica. Ponto crítico: " + pergunta);
+                    case "Riscos" -> new PlanoAcaoDTO("Fortalecer Gestão de Riscos", "Mapear riscos críticos, definir apetite a risco, acompanhar exposição e formalizar tratamento dos riscos de TI. Ponto crítico: " + pergunta);
+                    case "Desempenho e Valor" -> new PlanoAcaoDTO("Mensurar Valor e Desempenho", "Implantar indicadores para valor entregue, desempenho dos serviços, conformidade e retorno dos investimentos em TI. Ponto crítico: " + pergunta);
+                    case "Segurança" -> new PlanoAcaoDTO("Fortalecer Segurança", "Formalizar controles de segurança, gestão de vulnerabilidades, monitoramento e resposta a incidentes. Ponto crítico: " + pergunta);
+                    case "Controle de Acesso" -> new PlanoAcaoDTO("Reforçar Controle de Acesso", "Revisar perfis, privilégios, segregação de funções e controles de acesso a sistemas e dados críticos. Ponto crítico: " + pergunta);
+                    case "Continuidade e Backup" -> new PlanoAcaoDTO("Garantir Continuidade", "Estruturar backup, restauração, continuidade e testes periódicos para sustentar a operação em cenários de falha. Ponto crítico: " + pergunta);
+                    case "Infraestrutura" -> new PlanoAcaoDTO("Elevar Infraestrutura", "Ampliar monitoramento, documentação, disponibilidade e resiliência da infraestrutura crítica. Ponto crítico: " + pergunta);
+                    case "Incidentes e Problemas" -> new PlanoAcaoDTO("Aprimorar Suporte Operacional", "Padronizar registro, escalonamento, causa raiz e base de conhecimento para incidentes e problemas. Ponto crítico: " + pergunta);
+                    case "Mudanças e Liberação" -> new PlanoAcaoDTO("Controlar Mudanças", "Formalizar avaliação de impacto, aprovação, rollback e rastreabilidade das mudanças e liberações. Ponto crítico: " + pergunta);
+                    case "Serviços e SLA" -> new PlanoAcaoDTO("Gerir Serviços e SLA", "Implantar catálogo de serviços, metas de atendimento, monitoramento e comunicação periódica dos níveis de serviço. Ponto crítico: " + pergunta);
+                    case "Serviços" -> new PlanoAcaoDTO("Gerir Serviços e SLA", "Implantar catálogo de serviços, metas de atendimento, monitoramento e comunicação periódica dos níveis de serviço. Ponto crítico: " + pergunta);
+                    case "Processos" -> new PlanoAcaoDTO("Padronizar Processos", "Documentar rotinas críticas, definir responsáveis e reforçar a execução padronizada dos processos de TI. Ponto crítico: " + pergunta);
+                    case "Pessoas" -> new PlanoAcaoDTO("Desenvolver Competências", "Estruturar capacitação, avaliação de desempenho e cobertura para funções críticas da equipe de TI. Ponto crítico: " + pergunta);
+                    case "Dados" -> new PlanoAcaoDTO("Governar Dados", "Melhorar qualidade, responsabilidade e uso gerencial dos dados para apoiar decisões e controles. Ponto crítico: " + pergunta);
+                    case "Proteção de Dados" -> new PlanoAcaoDTO("Proteger Dados", "Fortalecer classificação, privacidade, inventário e proteção dos dados sensíveis e regulados. Ponto crítico: " + pergunta);
+                    default -> new PlanoAcaoDTO("Melhorar " + cat, "Executar ação corretiva e padronizar controles da categoria " + cat + ". Ponto crítico: " + pergunta);
+                };
                 acoes.putIfAbsent(plano.getTitulo(), plano);
             }
         }
