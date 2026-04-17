@@ -1,7 +1,7 @@
 protect();
 function renderSidebar(active='dashboard') {
   const user = getUser();
-  const menu = [['dashboard','Dashboard','dashboard.html'],['empresas','Empresas','empresas.html'],['questoes','Questões','questoes.html'],['avaliacao','Avaliação','avaliacao.html'],['relatorio','Relatórios','relatorio.html']]
+  const menu = [['dashboard','Dashboard','dashboard.html'],['empresas','Empresas','empresas.html'],['questoes','Questões','questoes.html'],['servicos','Serviços TI','servicos.html'],['incidentes','Incidentes','incidentes.html'],['avaliacao','Avaliação','avaliacao.html'],['relatorio','Relatórios','relatorio.html']]
     .map(([key,label,href]) => `<a class="${active===key?'active':''}" href="${href}">${label}</a>`).join('');
   document.getElementById('sidebar').innerHTML = `<a href="index.html"><img src="assets/logo-branca.png" class="sidebar-logo"></a><div class="muted" style="color:#bfdbfe;margin-bottom:12px">Olá, ${user?.nome||''}</div><div>${menu}</div><a href="#" onclick="logout()">Sair</a>`;
 }

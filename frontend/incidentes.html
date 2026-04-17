@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incidentes TI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="main">
+      <div class="page-head">
+        <div>
+          <h1>Incidentes de TI</h1>
+          <p class="muted">Controle abertura, status e SLA de incidentes com foco em suporte e operação.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <form id="incidenteForm" class="form-grid">
+          <input type="hidden" id="incidenteId">
+          <select class="input" id="empresaId" required></select>
+          <select class="input" id="servicoId"><option value="">Sem serviço vinculado</option></select>
+          <input class="input" id="titulo" placeholder="Título do incidente" required>
+          <select class="input" id="prioridade" required>
+            <option value="">Selecione a prioridade</option>
+            <option value="Baixa">Baixa</option>
+            <option value="Média">Média</option>
+            <option value="Alta">Alta</option>
+            <option value="Crítica">Crítica</option>
+          </select>
+          <select class="input" id="status" required>
+            <option value="Aberto">Aberto</option>
+            <option value="Em atendimento">Em atendimento</option>
+            <option value="Aguardando cliente">Aguardando cliente</option>
+            <option value="Resolvido">Resolvido</option>
+            <option value="Fechado">Fechado</option>
+          </select>
+          <input class="input" id="slaHoras" type="number" min="1" placeholder="SLA do incidente em horas">
+          <textarea class="input" id="descricao" placeholder="Descrição do incidente" rows="3"></textarea>
+          <button class="btn btn-primary" type="submit">Salvar incidente</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="page-head" style="margin-bottom:12px">
+          <div>
+            <h2 style="margin:0;font-size:1.1rem">Fila de incidentes</h2>
+          </div>
+          <button class="btn btn-secondary" onclick="listar()">Atualizar</button>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Serviço</th>
+              <th>Prioridade</th>
+              <th>Status</th>
+              <th>SLA</th>
+              <th>Dentro do SLA</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="incidenteTabela"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="utils.js"></script>
+  <script src="incidentes.js"></script>
+</body>
+</html>
