@@ -1,0 +1,21 @@
+# Maven
+target/
+
+# Logs
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+*.tmp
+*.swp
+
+# Node (caso use frontend separado futuramente)
+node_modules/
