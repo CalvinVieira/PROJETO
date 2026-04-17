@@ -12,9 +12,7 @@
 <body>
     <header class='header'>
         <div class='container nav'><a class='brand' href='index.html'><img src='assets/logo.png' alt='Stratec TI'></a>
-            <div class='menu'><a href='#importancia'>Importância</a><a href='#pilares'>Pilares</a><a
-                    href='#como-funciona'>Como funciona</a><a class='btn btn-secondary' href='login.html'>Login</a><a
-                    class='btn btn-primary' href='cadastro.html'>Cadastre-se</a></div>
+            <div class='menu' id='homeMenu'><a href='#importancia'>Importância</a><a href='#pilares'>Pilares</a><a href='#como-funciona'>Como funciona</a><a class='btn btn-secondary auth-link' href='login.html'>Login</a><a class='btn btn-primary auth-link' href='cadastro.html'>Cadastre-se</a></div>
         </div>
     </header>
     <section class='hero'>
@@ -24,8 +22,7 @@
                 <p>O Stratec TI ajuda empresas a medir o nível de maturidade da área de tecnologia com um diagnóstico
                     estruturado, score por categoria, plano de ação, evidências, roadmap e recomendações executivas com
                     base em governança, processos, segurança e valor para o negócio.</p>
-                <div class='hero-actions'><a class='btn btn-primary' href='cadastro.html'>Começar avaliação</a><a
-                        class='btn btn-secondary' href='login.html'>Acessar plataforma</a></div>
+                <div class='hero-actions' id='heroActions'><a class='btn btn-primary auth-link' href='cadastro.html'>Começar avaliação</a><a class='btn btn-secondary auth-link' href='login.html'>Acessar plataforma</a></div>
             </div>
             <div class='hero-card'><img src='assets/logo-branca.png' class='hero-logo'>
                 <p><strong>Por que avaliar a maturidade de TI?</strong></p>
@@ -118,6 +115,8 @@
             <div>© 2026 Stratec TI</div>
         </div>
     </footer>
+  <script src='auth.js'></script>
+  <script src='index.js'></script>
 </body>
 
 </html>

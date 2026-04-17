@@ -1,0 +1,8 @@
+maturidade-ti/target/
+target/
+.vscode/
+.idea/
+*.iml
+*.log
+.DS_Store
+Thumbs.db
