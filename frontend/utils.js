@@ -10,7 +10,7 @@ function renderSidebar(active = 'dashboard') {
     ['incidentes', 'Incidentes', 'incidentes.html'],
     ['avaliacao', 'Avaliação', 'avaliacao.html'],
     ['relatorio', 'Relatório Executivo', 'relatorio.html'],
-    ['governanca', '📋 Governança & PDTI', 'governanca.html'],
+    ['governanca', 'Governança & PDTI', 'governanca.html'],
     ['governanca-resultados', 'Resultados de Governança', 'governanca-resultados.html'],
     ['servicos-resultados', 'Resultados de Serviços', 'servicos-resultados.html'],
     ['seguranca-resultados', 'Resultados de Segurança', 'seguranca-resultados.html'],
