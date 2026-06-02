@@ -107,3 +107,80 @@ INSERT INTO questao (pergunta, categoria, tipo_avaliacao, peso) VALUES
 
 ('A equipe recebe capacitação contínua?', 'Pessoas', 'Gestão', 3),
 ('Existe cultura de melhoria contínua?', 'Pessoas', 'Gestão', 4);
+-- ============================================================
+-- UPGRADE: MÓDULO DE GOVERNANÇA DE TI - STRATEC TI
+-- ============================================================
+
+-- Tabela de configuração do PDTI
+CREATE TABLE IF NOT EXISTS pdti_config (
+    id BIGSERIAL PRIMARY KEY,
+    empresa_id BIGINT NOT NULL REFERENCES empresa(id) ON DELETE CASCADE,
+    missao TEXT,
+    visao TEXT,
+    objetivos_estrategicos TEXT,
+    metas_estrategicas TEXT,
+    periodo_vigencia_inicio VARCHAR(20),
+    periodo_vigencia_fim VARCHAR(20),
+    responsavel VARCHAR(255),
+    patrocinador_executivo VARCHAR(255),
+    contexto_organizacional TEXT,
+    contexto_tecnologico TEXT,
+    analise_situacional TEXT,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabela do Plano de Ação 5W2H
+CREATE TABLE IF NOT EXISTS plano_acao_5w2h (
+    id BIGSERIAL PRIMARY KEY,
+    empresa_id BIGINT NOT NULL REFERENCES empresa(id) ON DELETE CASCADE,
+    o_que VARCHAR(500) NOT NULL,
+    por_que TEXT,
+    onde VARCHAR(300),
+    quando VARCHAR(100),
+    quem VARCHAR(200),
+    como TEXT,
+    quanto VARCHAR(100),
+    prioridade VARCHAR(30) DEFAULT 'MEDIA',
+    status VARCHAR(30) DEFAULT 'PENDENTE',
+    categoria_origem VARCHAR(100),
+    score_origem DECIMAL(5,2),
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabela da Matriz de Gestão de Riscos
+CREATE TABLE IF NOT EXISTS gestao_riscos (
+    id BIGSERIAL PRIMARY KEY,
+    empresa_id BIGINT NOT NULL REFERENCES empresa(id) ON DELETE CASCADE,
+    descricao VARCHAR(500) NOT NULL,
+    tipo VARCHAR(30) DEFAULT 'Ameaça',
+    ativo VARCHAR(200),
+    ameaca VARCHAR(300),
+    vulnerabilidade TEXT,
+    causa TEXT,
+    consequencia TEXT,
+    impacto INTEGER DEFAULT 3,
+    probabilidade VARCHAR(30) DEFAULT 'Moderado',
+    nivel_risco VARCHAR(30),
+    nivel_risco_num INTEGER,
+    tratamento VARCHAR(30) DEFAULT 'Mitigar',
+    responsavel VARCHAR(200),
+    status VARCHAR(30) DEFAULT 'Identificado',
+    categoria_origem VARCHAR(100),
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabela do Roadmap Tecnológico
+CREATE TABLE IF NOT EXISTS roadmap_tecnologico (
+    id BIGSERIAL PRIMARY KEY,
+    empresa_id BIGINT NOT NULL REFERENCES empresa(id) ON DELETE CASCADE,
+    iniciativa VARCHAR(300) NOT NULL,
+    descricao TEXT,
+    trimestre VARCHAR(20),
+    prioridade VARCHAR(30) DEFAULT 'MEDIA',
+    dependencias VARCHAR(500),
+    status VARCHAR(30) DEFAULT 'PLANEJADO',
+    categoria VARCHAR(100),
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+

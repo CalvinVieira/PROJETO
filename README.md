@@ -1,202 +1,135 @@
-# Stratec TI
+# Stratec TI – Plataforma de Maturidade e Governança de TI
 
-Sistema web para **avaliação da maturidade da Tecnologia da Informação em empresas**, desenvolvido com foco em **governança, gestão, segurança, processos e apoio à tomada de decisão**.
-
-O objetivo da aplicação é permitir que uma empresa responda a um questionário estruturado, obtenha um **score de maturidade segmentado e geral**, visualize os resultados em **gráficos e relatórios**, e utilize essas informações para apoiar a evolução da sua área de TI.
+Sistema web para **avaliação da maturidade de TI** e **geração automática de documentos de governança corporativa**.
 
 Acesse em: https://stratec-ti-frontend.onrender.com/
----
-
-## 📌 Visão Geral
-
-O **Stratec TI** foi desenvolvido como uma solução acadêmica e prática para apoiar o diagnóstico da maturidade de TI em organizações, com base em pilares como:
-
-- Governança de TI
-- Segurança da Informação
-- Infraestrutura
-- Gestão de Serviços
-- Desenvolvimento de Software
-- Gestão de Dados
-- Processos
-- Pessoas
-- Tecnologia
-
-A aplicação transforma respostas estruturadas em um **diagnóstico claro, visual e interpretativo**, permitindo que a empresa identifique:
-
-- seus pontos fortes
-- áreas vulneráveis
-- nível atual de maturidade
-- prioridades de melhoria
 
 ---
 
-## 🎯 Objetivo do Projeto
+## 🚀 Novidades – Módulo de Governança (v2.0)
 
-Permitir que empresas realizem uma **autoavaliação da sua maturidade em TI** por meio de um sistema web simples, intuitivo e visual, gerando:
+A versão 2.0 adiciona uma camada completa de **Governança e Planejamento de TI**, transformando o diagnóstico em documentos corporativos prontos para uso:
 
-- **score por categoria**
-- **score geral**
-- **nível de maturidade**
-- **gráficos de apoio**
-- **relatório executivo**
-- **plano de ação orientativo**
+### Fluxo de Trabalho
+```
+QUESTIONÁRIO → DIAGNÓSTICO → PLANO 5W2H → MATRIZ DE RISCOS → PDTI
+```
 
----
-
-## 🧠 Problema que o Sistema Resolve
-
-Muitas empresas utilizam tecnologia diariamente, mas **não sabem o quão madura está sua área de TI**.
-
-Isso gera cenários como:
-
-- TI atuando apenas de forma reativa
-- ausência de políticas e processos definidos
-- baixa segurança da informação
-- falta de indicadores e controle
-- infraestrutura sem planejamento
-- decisões sem base em diagnóstico real
-
-O **Stratec TI** foi criado justamente para transformar esse cenário em uma análise prática, acessível e orientada à melhoria contínua.
+### Documentos Gerados Automaticamente
+| Documento | Formato |
+|---|---|
+| Diagnóstico Completo de Maturidade | PDF |
+| PDTI – Plano Diretor de TI (padrão ABNT) | PDF |
+| Plano de Ação 5W2H | Excel |
+| Matriz de Gestão de Riscos | Excel |
 
 ---
 
-## 🚀 Funcionalidades
+## 📌 Funcionalidades
 
-### 👤 Acesso e Usuários
-- Cadastro de usuário
-- Login
-- Logout
-- Persistência de sessão local
-- Navegação autenticada
-
-### 🏢 Gestão de Empresas
-- Cadastro de empresas
-- Associação de avaliações por empresa
-- Organização dos dados por contexto empresarial
-
-### 📝 Questionário de Maturidade
-- Aplicação de questionário estruturado
-- Respostas em escala de maturidade (0 a 5)
-- Campo obrigatório de **categoria percebida da resposta**
-- Destaque visual da categoria selecionada
-- Validação de preenchimento antes da finalização
-
-### 📊 Dashboard
-- Visualização de indicadores principais
-- Quantidade de avaliações realizadas
-- Quantidade de relatórios gerados
-- Acesso rápido às áreas do sistema
-
-### 📄 Relatório de Maturidade
-- Score geral da empresa
-- Score por categoria
-- Classificação do nível de maturidade
-- Categoria mais vulnerável
-- Conclusão interpretativa
-- Recomendações
-- Evidências registradas
-- Plano de ação
-
-### 📈 Visualização Gráfica
-- Gráfico Radar de Maturidade
-- Gráfico de Barras por Categoria
-- Indicadores visuais para apoio à leitura do diagnóstico
-
-### 🧾 Exportação PDF
-- Geração de relatório em PDF
-- Layout visual refinado
-- Captura em alta resolução
-- Compatível com uso acadêmico e apresentação
-
-### 🌐 Publicação Online
-- Compatível com execução local via Docker
-- Compatível com publicação online via Render
-- Acesso via navegador e QR Code
-- Responsivo para mobile
+- ✅ Autenticação e cadastro de usuários
+- ✅ Cadastro de empresas
+- ✅ Questionário de maturidade (32 questões, 7 categorias)
+- ✅ Score geral e por categoria
+- ✅ Dashboard executivo
+- ✅ Relatório de diagnóstico com gráficos (Radar, Bar)
+- ✅ **[NOVO]** Geração automática do Plano 5W2H
+- ✅ **[NOVO]** Geração automática da Matriz de Riscos
+- ✅ **[NOVO]** Motor de recomendações por nível de maturidade
+- ✅ **[NOVO]** PDTI completo com estrutura ABNT
+- ✅ **[NOVO]** Exportação PDF Diagnóstico Completo
+- ✅ **[NOVO]** Exportação PDF PDTI formal
+- ✅ **[NOVO]** Exportação Excel 5W2H
+- ✅ **[NOVO]** Exportação Excel Matriz de Riscos
 
 ---
 
-## 🏗️ Arquitetura do Projeto
+## 🛠️ Stack Tecnológica
 
-O projeto foi dividido em 3 partes principais:
-
-- **Frontend**: interface web (HTML, CSS, JavaScript)
-- **Backend**: API REST (Java + Spring Boot)
-- **Banco de Dados**: PostgreSQL
+- **Backend:** Java 17 + Spring Boot 3.3.5 + Spring Data JPA
+- **Banco de Dados:** PostgreSQL 16
+- **Frontend:** HTML5 + CSS3 + JavaScript (Vanilla)
+- **Bibliotecas frontend:** Chart.js, jsPDF, html2canvas, SheetJS
+- **Deploy:** Render (backend + frontend separados) ou Docker Compose
 
 ---
 
-## 🧰 Tecnologias Utilizadas
+## 🗄️ Banco de Dados
 
-### Frontend
-- HTML5
-- CSS3
-- JavaScript (Vanilla JS)
-- Chart.js
-- html2canvas
-- jsPDF
+### Tabelas originais
+- `usuario`, `empresa`, `questao`, `resposta`, `servico_ti`, `incidente_ti`
 
-### Backend
-- Java 17
-- Spring Boot
-- Spring Web
-- Spring Data JPA
-- Bean Validation
+### Tabelas adicionadas (v2.0)
+- `pdti_config` – Configuração do PDTI (missão, visão, objetivos, vigência)
+- `plano_acao_5w2h` – Plano de Ação 5W2H automático e manual
+- `gestao_riscos` – Matriz de Gestão de Riscos
+- `roadmap_tecnologico` – Roadmap tecnológico por trimestre
 
-### Banco de Dados
-- PostgreSQL
+---
 
-### Infraestrutura / Deploy
-- Docker
-- Docker Compose
-- Render
+## 🔧 Variáveis de Ambiente (Render)
 
-### Ferramentas de Apoio
-- VS Code
-- DBeaver
-- Git
-- GitHub
+```
+SPRING_DATASOURCE_URL=jdbc:postgresql://<host>:<port>/<database>
+SPRING_DATASOURCE_USERNAME=<usuario>
+SPRING_DATASOURCE_PASSWORD=<senha>
+PORT=8080
+```
+
+---
+
+## 🐳 Executar com Docker Compose (local)
+
+```bash
+docker-compose up --build
+```
+
+- Frontend: http://localhost
+- Backend: http://localhost:8080
+- Banco: localhost:5432
+
+**Credenciais padrão:**
+- admin@stratec.com / 123456
+- avaliador@stratec.com / 123456
+
+---
+
+## 📡 Endpoints de API
+
+### Existentes (preservados)
+- `POST /api/auth/login`
+- `GET/POST /api/empresas`
+- `GET /api/questoes`
+- `POST /api/respostas`
+- `GET /api/relatorios/empresa/{id}`
+- `GET /api/dashboard`
+
+### Novos – Módulo de Governança
+- `POST /api/governanca/gerar/{empresaId}` – Geração automática completa
+- `GET/POST /api/governanca/pdti/{empresaId}` – PDTI config
+- `GET/POST /api/governanca/plano/{empresaId}` – Plano 5W2H
+- `DELETE /api/governanca/plano/{id}` – Remover item do plano
+- `GET/POST /api/governanca/riscos/{empresaId}` – Matriz de riscos
+- `DELETE /api/governanca/riscos/{id}` – Remover risco
 
 ---
 
 ## 📁 Estrutura do Projeto
 
-```bash
-STRATEC-TI/
-├── docker-compose.yml
-├── README.md
+```
+PROJETO/
+├── maturidade-ti/          # Backend Spring Boot
+│   └── src/main/java/com/maturidade/ti/
+│       ├── controller/     # REST Controllers
+│       ├── service/        # Lógica de negócio
+│       ├── repository/     # JPA Repositories
+│       ├── model/          # Entidades JPA
+│       └── dto/            # Data Transfer Objects
+├── frontend/               # Frontend estático (nginx)
+│   ├── governanca.html     # [NOVO] Módulo de Governança
+│   ├── governanca.js       # [NOVO] Lógica + exportações
+│   └── ...
 ├── db/
-│   ├── Dockerfile
-│   └── init.sql
-├── maturidade-ti/
-│   ├── Dockerfile
-│   ├── pom.xml
-│   ├── src/
-│   │   └── main/
-│   │       ├── java/com/maturidade/ti/
-│   │       │   ├── config/
-│   │       │   ├── controller/
-│   │       │   ├── dto/
-│   │       │   ├── model/
-│   │       │   ├── repository/
-│   │       │   ├── service/
-│   │       │   └── MaturidadeTiApplication.java
-│   │       └── resources/
-│   │           ├── application.properties
-│   │           └── data.sql
-├── frontend/
-│   ├── index.html
-│   ├── login.html
-│   ├── cadastro.html
-│   ├── dashboard.html
-│   ├── empresas.html
-│   ├── questionario.html
-│   ├── relatorio.html
-│   ├── style.css
-│   ├── auth.js
-│   ├── app.js
-│   ├── relatorio.js
-│   └── assets/
-│       ├── logo.png
-│       ├── favicon.png
-│       └── ...
+│   └── init.sql            # Schema + dados iniciais
+└── docker-compose.yml
+```
