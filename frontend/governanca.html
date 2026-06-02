@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Governança de TI – Stratec TI</title>
+  <link rel="icon" type="image/png" href="assets/logo-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gov-tabs { display:flex; gap:8px; margin-bottom:24px; flex-wrap:wrap; }
+    .gov-tab { padding:10px 20px; border-radius:12px; border:1px solid var(--border); background:#fff; cursor:pointer; font-weight:600; color:var(--muted); transition:.2s; }
+    .gov-tab.active { background:var(--blue); color:#fff; border-color:var(--blue); }
+    .gov-tab:hover:not(.active) { border-color:var(--blue); color:var(--blue); }
+    .gov-panel { display:none; }
+    .gov-panel.active { display:block; }
+    .plano-table, .risco-table { width:100%; border-collapse:collapse; font-size:.88rem; }
+    .plano-table th, .risco-table th { background:var(--navy); color:#fff; padding:10px 12px; text-align:left; font-size:.82rem; }
+    .plano-table td, .risco-table td { padding:9px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
+    .plano-table tr:hover td, .risco-table tr:hover td { background:var(--soft-blue); }
+    .badge-prioridade { padding:3px 10px; border-radius:999px; font-size:.74rem; font-weight:700; }
+    .badge-CRITICA { background:#fee2e2; color:#dc2626; }
+    .badge-ALTA { background:#ffedd5; color:#ea580c; }
+    .badge-MEDIA { background:#fef9c3; color:#ca8a04; }
+    .badge-BAIXA { background:#dcfce7; color:#16a34a; }
+    .badge-risco-Crítico { background:#dc2626; color:#fff; }
+    .badge-risco-Alto { background:#ea580c; color:#fff; }
+    .badge-risco-Moderado { background:#d97706; color:#fff; }
+    .badge-risco-Baixo { background:#16a34a; color:#fff; }
+    .badge-risco-Desprezível { background:#94a3b8; color:#fff; }
+    .pdti-form { display:grid; gap:16px; }
+    .pdti-form .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .pdti-form textarea { min-height:80px; resize:vertical; }
+    .toolbar-actions { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .gen-status { font-size:.85rem; color:var(--muted); padding:6px 12px; background:var(--soft-blue); border-radius:8px; }
+    .gov-empty { text-align:center; padding:40px; color:var(--muted); }
+    .table-scroll { overflow-x:auto; }
+    .export-row { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+    .kpi-row { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:14px; margin-bottom:24px; }
+    .kpi-mini { background:#fff; border:1px solid var(--border); border-radius:16px; padding:16px; text-align:center; }
+    .kpi-mini h5 { margin:0 0 6px; font-size:.78rem; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+    .kpi-mini .kval { font-size:1.6rem; font-weight:900; color:var(--navy); }
+    .kpi-mini .klab { font-size:.75rem; color:var(--muted); }
+    @media print { .sidebar, .toolbar-actions, .gov-tabs, .export-row, .btn { display:none!important; } }
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <div class="page-head">
+      <div>
+        <h1>Governança &amp; Planejamento</h1>
+        <p class="muted">Diagnóstico → 5W2H → Riscos → PDTI</p>
+      </div>
+      <div class="toolbar-actions">
+        <select class="input" id="empresaSelect" style="min-width:200px"></select>
+        <button class="btn btn-primary" id="btnGerar">⚡ Gerar Automático</button>
+        <span class="gen-status" id="genStatus" style="display:none">Processando...</span>
+      </div>
+    </div>
+
+    <div id="govContent">
+      <div class="gov-empty">Selecione uma empresa e clique em <strong>Gerar Automático</strong> para criar o plano de governança completo a partir do questionário.</div>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+<script src="auth.js"></script>
+<script src="utils.js"></script>
+<script src="governanca.js"></script>
+</body>
+</html>
